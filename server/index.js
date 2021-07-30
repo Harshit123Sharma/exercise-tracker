@@ -15,6 +15,9 @@ mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true });
 const connection = mongoose.connection;
 connection.once("open", () => {
   console.log("MongoDB database connection established successfully");
+  app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/index.html");
+  });
 });
 
 const exercisesRouter = require("./routes/exercises");
